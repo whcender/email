@@ -1,7 +1,7 @@
 {
   "routes": [
     {
-      "src": "/api/email",
+      "src": "/app/api/email",
       "methods": ["POST", "GET"],
       "headers": {
         "Access-Control-Allow-Origin": "*"
