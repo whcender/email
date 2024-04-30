@@ -15,7 +15,7 @@ export const POST = async (req: NextRequest) => {
     }
     catch (e) {
         return new NextResponse(
-            JSON.stringify({ message: "Something went wrong!" }),
+            JSON.stringify({ message: "Something went wrong!", e }), // Hata mesajı yanıtla birlikte döndürülüyor
             { status: 500 }
         );
 
