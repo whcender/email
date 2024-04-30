@@ -1,12 +1,11 @@
 {
-    "routes": [
-      {
-        "src": "/api/email",
-        "methods": ["POST"],
-        "headers": {
-          "Access-Control-Allow-Origin": "*"
-        }
+  "routes": [
+    {
+      "src": "/api/email",
+      "methods": ["POST"],
+      "headers": {
+        "Access-Control-Allow-Origin": "https://mydetect-ai.vercel.app"
       }
-    ]
-  }
-  
+    }
+  ]
+}
