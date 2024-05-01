@@ -23,7 +23,7 @@ export const POST = async (req: NextRequest) => {
     };
 }
 
-    export const GET = async (req: NextRequest) => {
+    export const GET = async () => {
         const emails = await prisma.email.findMany()
 
         return new NextResponse(JSON.stringify(emails), { status: 200 });
