@@ -4,6 +4,15 @@ import { NextRequest, NextResponse } from "next/server";
 export const POST = async (req: NextRequest) => {
     const { email } = await req.json()
 
+    const emailExit = await prisma.email.findUnique({
+        where: {
+            email: email
+        }
+    })
+
+    if (emailExit) {
+        return new NextResponse(JSON.stringify({ message: "Email already exists" }), { status: 400 });
+    }
     try {
         const emailExists = await prisma.email.create({
             data: {
