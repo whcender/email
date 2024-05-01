@@ -1,31 +1,36 @@
-"use client"
-import Image from "next/image";
 
-export default function Home() {
 
-  const handleget = async () => {
-    const res = await fetch("https://email-eight-bice.vercel.app/api/email");
-    const data = await res.json();
-    console.log(data);
+const getData = async () => {
+  try {
+      const res = await fetch(`https://email-eight-bice.vercel.app/api/email`, {
+          cache: "no-store",
+      });
 
+      if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      const result = await res.json();
+
+      return result;
+  } catch (error) {
+      console.error("Error fetching data:", error);
+      return [];
   }
+};
 
-  const handlepush = async () => {
-    const res = await fetch("https://email-eight-bice.vercel.app/api/email", {
-      method: "POST",
-      body: JSON.stringify({ email: "31cek" }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    if (res.ok) {
-      console.log("gönderildi");
-    }
-  };
+
+export default async function Home() {
+
+  const data = await getData();
   return (
     <div className="bg-black text-white">
-      <button onClick={handleget}>tıkla</button>
-      <button onClick={handlepush}>gönder</button>
+      <h1>USERS</h1>
+        {data.map((email :any) => (
+          <div key={email.id}>
+            <h2>{email.email}</h2>
+          </div>
+        ))}
     </div>
   );
 }
