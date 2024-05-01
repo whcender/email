@@ -13,18 +13,27 @@ export const POST = async (req: NextRequest) => {
         return new NextResponse(JSON.stringify({ message: "Email sent" }), { status: 200 });
 
     }
-    catch (e) {
+    catch (err) {
+        console.log(err);
         return new NextResponse(
-            JSON.stringify({ message: "Something went wrong!" }), // Hata mesajı yanıtla birlikte döndürülüyor
+            JSON.stringify({ message: "Something went wrong!" }),
             { status: 500 }
         );
-
-
-    };
+    }
 }
 
-    export const GET = async () => {
+export const GET = async () => {
+    try {
+
         const emails = await prisma.email.findMany()
 
         return new NextResponse(JSON.stringify(emails), { status: 200 });
-    };
+    } catch (err) {
+        console.log(err);
+        return new NextResponse(
+            JSON.stringify({ message: "Something went wrong!" }),
+            { status: 500 }
+        );
+    }
+
+};
