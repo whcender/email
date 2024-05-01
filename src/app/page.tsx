@@ -4,16 +4,16 @@ import Image from "next/image";
 export default function Home() {
 
   const handleget = async () => {
-    const res = await fetch("http://localhost:3000/api/email");
+    const res = await fetch("https://email-eight-bice.vercel.app/api/email");
     const data = await res.json();
     console.log(data);
 
   }
 
   const handlepush = async () => {
-    const res = await fetch("http://localhost:3000/api/email", {
+    const res = await fetch("https://email-eight-bice.vercel.app/api/email", {
       method: "POST",
-      body: JSON.stringify({ email: "asdasd" }),
+      body: JSON.stringify({ email: "31cek" }),
       headers: {
         "Content-Type": "application/json",
       },
