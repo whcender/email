@@ -15,6 +15,5 @@ datasource db {
 
 model Email {
   id    String @id @default(cuid()) @map("_id")
-  createdAt DateTime @default(now())
   email String @unique
 }

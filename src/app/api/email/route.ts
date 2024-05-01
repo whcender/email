@@ -5,8 +5,8 @@ export const POST = async (req: NextRequest) => {
     const { email } = await req.json()
 
     try {
-        const emailExists = await prisma.email.findFirst({
-            where: {
+        const emailExists = await prisma.email.create({
+            data: {
                 email: email
             }
         })
