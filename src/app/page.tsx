@@ -25,7 +25,7 @@ export default async function Home() {
   const data = await getData();
   return (
     <div className="bg-black text-white">
-      <h1>USERS</h1>
+      <h1>User Mails</h1>
         {data.map((email :any) => (
           <div key={email.id}>
             <h2>{email.email}</h2>
